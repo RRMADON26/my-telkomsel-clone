@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:weather/app/styles/colors.dart';
+import 'package:weather/app/styles/fonts.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -16,16 +19,11 @@ class HomeView extends GetView<HomeController> {
         title: RichText(
           text: const TextSpan(
             text: "Hai, ",
-            style: TextStyle(
-              fontSize: 18,
-            ),
+            style: FontsStyles.medium20,
             children: [
               TextSpan(
                 text: "Romadon",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
+                style: FontsStyles.bold20,
               ),
             ],
           ),
@@ -39,8 +37,8 @@ class HomeView extends GetView<HomeController> {
               margin: EdgeInsets.only(
                 right: 20,
               ),
-              child: Image.asset(
-                "assets/logo/logo-qrcode.png",
+              child: SvgPicture.asset(
+                "assets/icon/icon-qrcode.svg",
                 fit: BoxFit.contain,
               ),
             ),
@@ -54,7 +52,7 @@ class HomeView extends GetView<HomeController> {
             child: Container(
               width: Get.width,
               height: 185,
-              color: Color(0XFFEC2028),
+              color: ColorStyles.red,
             ),
           ),
           Container(
@@ -69,7 +67,6 @@ class HomeView extends GetView<HomeController> {
                         margin: EdgeInsets.symmetric(
                           horizontal: 25,
                         ),
-                        height: 187,
                         decoration: BoxDecoration(
                           boxShadow: [
                             new BoxShadow(
@@ -96,10 +93,8 @@ class HomeView extends GetView<HomeController> {
                                 children: [
                                   Text(
                                     "081290112333",
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
+                                    style: FontsStyles.bold18.copyWith(
+                                      color: ColorStyles.white,
                                     ),
                                   ),
                                   Image.asset("assets/logo/logo-simpati.png"),
@@ -112,10 +107,8 @@ class HomeView extends GetView<HomeController> {
                                 children: [
                                   Text(
                                     "Sisa Pulsa Anda",
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white,
+                                    style: FontsStyles.medium14.copyWith(
+                                      color: ColorStyles.white,
                                     ),
                                   ),
                                 ],
@@ -126,22 +119,20 @@ class HomeView extends GetView<HomeController> {
                                 children: [
                                   Text(
                                     "Rp. 780.000",
-                                    style: TextStyle(
-                                      fontSize: 24,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
+                                    style: FontsStyles.bold24.copyWith(
+                                      color: ColorStyles.white,
                                     ),
                                   ),
                                   ElevatedButton(
                                     onPressed: () {},
                                     child: Text(
                                       "Isi Pulsa",
-                                      style: TextStyle(
-                                        color: Colors.black,
+                                      style: FontsStyles.medium14.copyWith(
+                                        color: ColorStyles.black,
                                       ),
                                     ),
                                     style: ElevatedButton.styleFrom(
-                                        primary: Color(0xffF7B731),
+                                        primary: ColorStyles.yellow,
                                         fixedSize: Size(90, 34)),
                                   ),
                                 ],
@@ -163,75 +154,40 @@ class HomeView extends GetView<HomeController> {
                                   RichText(
                                     text: TextSpan(
                                       text: "Berlaku sampai",
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.white,
-                                      ),
+                                      style: FontsStyles.medium14,
                                       children: [
                                         TextSpan(
                                           text: " 30 Desember 2022",
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 14,
-                                            color: Colors.white,
-                                          ),
+                                          style: FontsStyles.bold14,
                                         ),
                                       ],
                                     ),
                                   ),
                                   Row(
                                     children: [
-                                      Text(
-                                        "Telkomsel POIN",
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          color: Colors.white,
-                                        ),
-                                      ),
+                                      Text("Telkomsel POIN",
+                                          style: FontsStyles.medium14.copyWith(
+                                              color: ColorStyles.white)),
                                       SizedBox(
                                         width: 5,
                                       ),
                                       Container(
                                         padding: EdgeInsets.symmetric(
-                                          horizontal: 5,
+                                          horizontal: 6,
                                           vertical: 0,
                                         ),
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(3),
-                                          color: Color(0xffF7B731),
+                                          color: ColorStyles.yellow,
                                         ),
                                         child: Text(
                                           "2305",
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 14,
-                                            color: Colors.black,
-                                          ),
+                                          style: FontsStyles.bold14,
                                         ),
-                                      )
+                                      ),
                                     ],
-                                  )
-                                  // RichText(
-                                  //   text: TextSpan(
-                                  //     text: "Telkomsel POIN",
-                                  //     style: TextStyle(
-                                  //       fontSize: 14,
-                                  //       color: Colors.white,
-                                  //     ),
-                                  //     children: [
-                                  //       TextSpan(
-                                  //         text: " 205",
-                                  //         style: TextStyle(
-                                  //           fontWeight: FontWeight.bold,
-                                  //           fontSize: 14,
-                                  //           color: Colors.white,
-                                  //
-                                  //         ),
-                                  //       ),
-                                  //     ],
-                                  //   ),
-                                  // ),
+                                  ),
                                 ],
                               ),
                             ],
@@ -240,7 +196,7 @@ class HomeView extends GetView<HomeController> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 12, bottom: 12),
+                      padding: const EdgeInsets.only(top: 12, bottom: 25),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -248,6 +204,7 @@ class HomeView extends GetView<HomeController> {
                               title: "Internet", data: "52.10", unit: "GB"),
                           CardStatus(title: "Telepon", data: "20", unit: "Min"),
                           CardStatus(title: "SMS", data: "18", unit: "SMS"),
+
                         ],
                       ),
                     ),
@@ -266,13 +223,13 @@ class HomeView extends GetView<HomeController> {
                           child: Container(
                             child: ListView(
                               children: [
-                                Text("Kategori Paket"),
+                                // Text("Kategori Paket"),
                               ],
                             ),
                           ),
                         ),
                         Container(
-                          color: Colors.red,
+                          // color: Colors.red,
                           height: 60,
                         ),
                       ],
@@ -302,8 +259,8 @@ class CardStatus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
-      elevation: 2,
+      color: Colors.white60,
+      elevation: 3,
       shadowColor: Colors.black12,
       child: Container(
         width: 101,
@@ -313,26 +270,24 @@ class CardStatus extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title),
+              Text(
+                title,
+                style: FontsStyles.medium14.copyWith(
+                  color: ColorStyles.black,
+                ),
+              ),
               SizedBox(
                 height: 8,
               ),
               RichText(
                 text: TextSpan(
                   text: data,
-                  style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: FontsStyles.bold24.copyWith(color: ColorStyles.red),
                   children: [
                     TextSpan(
-                      text: " $unit",
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.normal,
-                          color: Color(0xFF747D8C)),
-                    ),
+                        text: " $unit",
+                        style: FontsStyles.medium14
+                            .copyWith(color: ColorStyles.greyDark)),
                   ],
                 ),
               ),

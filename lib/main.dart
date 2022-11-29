@@ -22,10 +22,12 @@ class MyApp extends StatelessWidget {
             return SplashScreen();
           } else {
             return GetMaterialApp(
+              theme: ThemeData(fontFamily: 'Google sans'),
               debugShowCheckedModeBanner: false,
               title: "Application",
-              initialRoute: Routes.HOME,
+              initialRoute: Routes.LOGIN,
               getPages: AppPages.routes,
+
             );
           }
         });

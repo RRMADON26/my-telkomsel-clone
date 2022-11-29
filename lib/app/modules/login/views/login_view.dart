@@ -2,8 +2,11 @@
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:weather/app/routes/app_pages.dart';
+import 'package:weather/app/styles/colors.dart';
+import 'package:weather/app/styles/fonts.dart';
 
 import '../controllers/login_controller.dart';
 
@@ -20,8 +23,8 @@ class LoginView extends GetView<LoginController> {
             Container(
               height: 150,
               alignment: Alignment.centerLeft,
-              child: Image.asset(
-                "assets/logo/logo-login.png",
+              child: SvgPicture.asset(
+                "assets/logo/logo-login.svg",
                 fit: BoxFit.contain,
               ),
             ),
@@ -29,18 +32,19 @@ class LoginView extends GetView<LoginController> {
               height: 20,
             ),
             Text(
-              "Silahkan masuk dengan nomor telkomsel kamu",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              "Silahkan masuk dengan nomor",
+              style: FontsStyles.bold18,
+            ),
+            Text(
+              "telkomsel kamu",
+              style: FontsStyles.bold18,
             ),
             SizedBox(
               height: 30,
             ),
             Text(
               "Nomor HP",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: FontsStyles.bold14,
             ),
             SizedBox(
               height: 10,
@@ -51,10 +55,12 @@ class LoginView extends GetView<LoginController> {
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: Color(0xFFCED6E0),
+                    color: ColorStyles.borderTextInput,
                   ),
                 ),
                 hintText: "Cth. 08129011xxxx",
+                hintStyle: (FontsStyles.medium18
+                    .copyWith(color: ColorStyles.placeholder)),
               ),
             ),
             Row(
@@ -70,9 +76,8 @@ class LoginView extends GetView<LoginController> {
                   child: RichText(
                     text: TextSpan(
                       text: "Saya menyetujui",
-                      style: TextStyle(
-                        color: Colors.black,
-                      ),
+                      style: FontsStyles.medium14
+                          .copyWith(color: ColorStyles.black),
                       children: [
                         TextSpan(
                           recognizer: TapGestureRecognizer()
@@ -80,7 +85,8 @@ class LoginView extends GetView<LoginController> {
                                   print("Syarat"),
                                 },
                           text: " syarat",
-                          style: TextStyle(color: Colors.red),
+                          style: FontsStyles.bold14
+                              .copyWith(color: ColorStyles.red),
                         ),
                         TextSpan(
                           text: ",",
@@ -92,11 +98,13 @@ class LoginView extends GetView<LoginController> {
                                   print("Ketentuan"),
                                 },
                           text: " ketentuan",
-                          style: TextStyle(color: Colors.red),
+                          style: FontsStyles.bold14
+                              .copyWith(color: ColorStyles.red),
                         ),
                         TextSpan(
                           text: " dan",
-                          style: TextStyle(color: Colors.black),
+                          style: FontsStyles.medium14
+                              .copyWith(color: ColorStyles.black),
                         ),
                         TextSpan(
                           recognizer: TapGestureRecognizer()
@@ -104,11 +112,13 @@ class LoginView extends GetView<LoginController> {
                                   print("Privasi"),
                                 },
                           text: " privasi",
-                          style: TextStyle(color: Colors.red),
+                          style: FontsStyles.bold14
+                              .copyWith(color: ColorStyles.red),
                         ),
                         TextSpan(
                           text: " Telkomsel",
-                          style: TextStyle(color: Colors.black),
+                          style: FontsStyles.medium14
+                              .copyWith(color: ColorStyles.black),
                         ),
                       ],
                     ),
@@ -121,22 +131,32 @@ class LoginView extends GetView<LoginController> {
             ),
             ElevatedButton(
               onPressed: () => Get.offAllNamed(
-                Routes.OTP,
+                Routes.HOME,
               ),
-              child: Text("MASUK"),
+              child: Text(
+                "MASUK",
+                style: FontsStyles.bold14.copyWith(
+                  color: ColorStyles.white,
+                ),
+              ),
               style: ElevatedButton.styleFrom(
-                primary: Color(0xFFEC2028),
+                primary: ColorStyles.red,
                 fixedSize: Size(335, 42),
               ),
             ),
             SizedBox(
-              height: 10,
+              height: 16,
             ),
             Center(
-              child: Text("Atau masuk menggunakan"),
+              child: Text(
+                "Atau masuk menggunakan",
+                style: FontsStyles.medium14.copyWith(
+                  color: ColorStyles.greyDark,
+                ),
+              ),
             ),
             SizedBox(
-              height: 30,
+              height: 16,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -146,7 +166,7 @@ class LoginView extends GetView<LoginController> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset("assets/logo/logo-fb.png"),
+                      SvgPicture.asset("assets/icon/icon-fb.svg"),
                       SizedBox(
                         width: 7,
                       ),
@@ -180,7 +200,9 @@ class LoginView extends GetView<LoginController> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset("assets/logo/logo-twitter.png"),
+                      SvgPicture.asset(
+                        "assets/icon/icon-twitter.svg",
+                      ),
                       SizedBox(
                         width: 7,
                       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -15,7 +16,7 @@ class SplashScreen extends StatelessWidget {
             width: Get.width * 0.5,
             height: Get.width * 0.5,
             child: Center(
-              child: Image.asset("assets/logo/logo.png"),
+              // child: SvgPicture.asset("assets/logo/logo-mytsel.svg"),
             ),
           ),
         ),
