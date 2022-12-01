@@ -22,6 +22,7 @@ flutter:
   assets:
     - assets/logo/
     - assets/icon/
+    - assets/image/
   fonts:
     - family: GoogleSans
       fonts:

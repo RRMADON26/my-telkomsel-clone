@@ -204,7 +204,6 @@ class HomeView extends GetView<HomeController> {
                               title: "Internet", data: "52.10", unit: "GB"),
                           CardStatus(title: "Telepon", data: "20", unit: "Min"),
                           CardStatus(title: "SMS", data: "18", unit: "SMS"),
-
                         ],
                       ),
                     ),
@@ -221,16 +220,140 @@ class HomeView extends GetView<HomeController> {
                       children: [
                         Expanded(
                           child: Container(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 20, horizontal: 10),
                             child: ListView(
                               children: [
-                                // Text("Kategori Paket"),
+                                Text(
+                                  "Kategori Paket",
+                                  style: FontsStyles.bold18,
+                                ),
+                                SizedBox(
+                                  height: 8,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    HomeCategories(
+                                      icon: "internet",
+                                      title: "Internet",
+                                    ),
+                                    HomeCategories(
+                                      icon: "telephone",
+                                      title: "Telephone",
+                                    ),
+                                    HomeCategories(
+                                      icon: "sms",
+                                      title: "SMS",
+                                    ),
+                                    HomeCategories(
+                                      icon: "roaming",
+                                      title: "Roaming",
+                                    )
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    HomeCategories(
+                                      icon: "entertainment",
+                                      title: "Hiburan",
+                                    ),
+                                    HomeCategories(
+                                      icon: "superior",
+                                      title: "Unggulan",
+                                    ),
+                                    HomeCategories(
+                                      icon: "stored",
+                                      title: "Tersimpan",
+                                    ),
+                                    HomeCategories(
+                                      icon: "history",
+                                      title: "Riwayat",
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 32,
+                                ),
+                                Text(
+                                  "Terbaru dari telkomsel",
+                                  style: FontsStyles.bold18,
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    children: [
+                                      NewsFromTelkomsel(
+                                        image: "assets/image/news-1.png",
+                                      ),
+                                      NewsFromTelkomsel(
+                                        image: "assets/image/news-2.png",
+                                      ),
+                                    ],
+                                  ),
+                                )
                               ],
                             ),
                           ),
                         ),
                         Container(
                           // color: Colors.red,
-                          height: 60,
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              const BoxShadow(
+                                color: Colors.black12,
+                                offset: const Offset(5.0, 5.0),
+                                blurRadius: 6.0,
+                                spreadRadius: 2.0,
+                              ),
+                              const BoxShadow(
+                                color: Colors.white,
+                                offset: const Offset(0.0, 0.0),
+                                blurRadius: 0.0,
+                                spreadRadius: 0.0,
+                              ),
+                            ],
+                          ),
+                          height: 70,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Container(
+                                height: 60,
+                                child: ItemNavigation(
+                                    status: true,
+                                    icon: "home",
+                                    title: "Beranda"),
+                              ),
+                              Container(
+                                height: 60,
+                                child: ItemNavigation(
+                                    status: false,
+                                    icon: "history",
+                                    title: "Riwayat"),
+                              ),
+                              Container(
+                                height: 60,
+                                child: ItemNavigation(
+                                    status: false,
+                                    icon: "help",
+                                    title: "Bantuan"),
+                              ),
+                              Container(
+                                height: 60,
+                                child: ItemNavigation(
+                                    status: false,
+                                    icon: "account",
+                                    title: "Akun Saya"),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -241,6 +364,91 @@ class HomeView extends GetView<HomeController> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class NewsFromTelkomsel extends StatelessWidget {
+  const NewsFromTelkomsel({Key? key, required this.image}) : super(key: key);
+
+  final String image;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(7),
+        image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover),
+      ),
+      margin: EdgeInsets.only(right: 15),
+      width: Get.width * 0.6,
+      height: 100,
+    );
+  }
+}
+
+class HomeCategories extends StatelessWidget {
+  const HomeCategories({Key? key, required this.icon, required this.title})
+      : super(key: key);
+
+  final String icon;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 75,
+      width: 92,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SvgPicture.asset(
+            "assets/icon/icon-$icon.svg",
+            fit: BoxFit.cover,
+          ),
+          SizedBox(
+            height: 8,
+          ),
+          Text(
+            title,
+            style: FontsStyles.medium14,
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class ItemNavigation extends StatelessWidget {
+  const ItemNavigation(
+      {Key? key, required this.status, required this.icon, required this.title})
+      : super(key: key);
+
+  final bool status;
+  final String icon;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SvgPicture.asset(
+          (status == true)
+              ? "assets/icon/icon-$icon-filled.svg"
+              : "assets/icon/icon-$icon-outline.svg",
+          fit: BoxFit.contain,
+        ),
+        SizedBox(
+          height: 5,
+        ),
+        Text(
+          title,
+          style: FontsStyles.medium14.copyWith(
+              color: (status == true) ? ColorStyles.red : ColorStyles.greyDark),
+        ),
+      ],
     );
   }
 }
