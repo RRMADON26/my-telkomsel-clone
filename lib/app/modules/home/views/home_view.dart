@@ -127,7 +127,7 @@ class HomeView extends GetView<HomeController> {
                                     onPressed: () {},
                                     child: Text(
                                       "Isi Pulsa",
-                                      style: FontsStyles.medium14.copyWith(
+                                      style: FontsStyles.bold14.copyWith(
                                         color: ColorStyles.black,
                                       ),
                                     ),
@@ -220,8 +220,8 @@ class HomeView extends GetView<HomeController> {
                       children: [
                         Expanded(
                           child: Container(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 20, horizontal: 10),
+                            padding:
+                                EdgeInsets.only(top: 10, left: 20),
                             child: ListView(
                               children: [
                                 Text(
@@ -295,6 +295,33 @@ class HomeView extends GetView<HomeController> {
                                       NewsFromTelkomsel(
                                         image: "assets/image/news-2.png",
                                       ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Text(
+                                  "Tanggap COVID-19",
+                                  style: FontsStyles.bold18,
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    children: [
+                                      CovidNews(
+                                          image:
+                                              "assets/image/covid-news-1.png",
+                                          title:
+                                              "Diskon Spesial 25% Untuk Pelanggan Baru"),
+                                      CovidNews(
+                                          image:
+                                              "assets/image/covid-news-2.png",
+                                          title:
+                                              "Bebas Kuota Akses Layanan Kesehatan"),
                                     ],
                                   ),
                                 )
@@ -387,6 +414,42 @@ class NewsFromTelkomsel extends StatelessWidget {
   }
 }
 
+class CovidNews extends StatelessWidget {
+  const CovidNews({Key? key, required this.image, required this.title})
+      : super(key: key);
+
+  final String image;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+
+      elevation: 5,
+      shadowColor: Colors.black12,
+      child: Container(
+        width: Get.width * 0.6,
+        height: 172,
+        child: Column(
+          children: [
+            Image.asset(image , fit: BoxFit.cover, height: 112,),
+            SizedBox(
+              height: 12,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12 ),
+              child: Text(
+                title,
+                style: FontsStyles.bold14,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class HomeCategories extends StatelessWidget {
   const HomeCategories({Key? key, required this.icon, required this.title})
       : super(key: key);
@@ -398,14 +461,16 @@ class HomeCategories extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 75,
-      width: 92,
+      width: 80,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SvgPicture.asset(
             "assets/icon/icon-$icon.svg",
-            fit: BoxFit.cover,
+            fit: BoxFit.contain,
+            height: 30,
+            width: 30,
           ),
           SizedBox(
             height: 8,
@@ -468,7 +533,7 @@ class CardStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: Colors.white60,
-      elevation: 3,
+      elevation: 5,
       shadowColor: Colors.black12,
       child: Container(
         width: 101,

@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(fontFamily: 'Google sans'),
               debugShowCheckedModeBanner: false,
               title: "Application",
-              initialRoute: Routes.LOGIN,
+              initialRoute: Routes.HOME,
               getPages: AppPages.routes,
 
             );
